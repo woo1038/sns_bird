@@ -44,3 +44,12 @@
 9. slick시에 UI 오류 수정, createGlobalStyle을 이용한 gloval 스타일 적용
 10. post card 이미지폼에서 스타일 태그를 따로 styles파일로 쪼개어 정리 완료
 11. 게시글에서 #으로 시작하는 태그들 정규식을 통하여 link태그로 활성화되게끔 수정
+
+### 2021.10.20
+
+1. redux-saga설치
+2. redux-saga 이팩트 및 generator을 이용하여 더미데이터및 reducer과의 통신완료
+3. redux-saga의 index 페이지를 post, user로 쪼개어 저장
+4. reducer및 saga의 type을 변수로 변경하여 실행
+5. reducer및 saga에서 switch문 요청, 성공, 실패 단계의 case작성
+6. pages와 components의 데이터 값을 saga와 reducer에 맞게 변경

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Form, Button, Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,18 +8,24 @@ import useInput from "../hooks/useInput";
 
 const PostForm = () => {
   const dispatch = useDispatch();
-  const { imagePaths } = useSelector((state) => state.post);
-  
-  const [text, onChangeText] = useInput("");
-  
-  const onSubmit = useCallback(() => {
-    dispatch(addPost);
-  }, []);
-  
+  const { imagePaths, addPostDone } = useSelector((state) => state.post);
+
   const imageInput = useRef();
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();
   }, [imageInput.current]);
+
+  const [text, onChangeText, setText] = useInput("");
+  /* 글작성후 지워주기 */
+  useEffect(() => {
+    if (addPostDone) {
+      setText("");
+    }
+  }, [addPostDone]);
+
+  const onSubmit = useCallback(() => {
+    dispatch(addPost(text));
+  }, [text]);
 
   return (
     <Form onFinish={onSubmit}>
